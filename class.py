@@ -92,7 +92,7 @@ class Request:
         request_list = request_str.split()
         action = request_list[0]
         self.__number = int(request_list[1])
-        self.__number = request_list[2]
+        self.__product = request_list[2]
         if action == "доставить":
             self.__from = self.cast(request_list[4])
             self.__to = self.cast(request_list[6])
@@ -111,12 +111,12 @@ class Request:
 
     def move(self):
         if self.__to and self.__from:
-            if eval(self.__from).remove(self.__number, self.__number):
-                eval(self.__to).add(self.__number, self.__number)
+            if eval(self.__from).remove(self.__product, self.__number):
+                eval(self.__to).add(self.__product, self.__number)
         elif self.__to:
-            eval(self.__to).add(self.__number, self.__number)
+            eval(self.__to).add(self.__product, self.__number)
         elif self.__from:
-            eval(self.__from).remove(self.__number, self.__number)
+            eval(self.__from).remove(self.__product, self.__number)
 
 
 storage_1 = Store(items={})
